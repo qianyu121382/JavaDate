@@ -9,9 +9,9 @@
     <div id="header"><h1>用户登录</h1></div>
     <div id="wrapper">
         <div id="content">
-            <form action="login.do" method="post">
+            <form action="login.do?method=login1" method="post">
                 <p> 用户名
-                    <input type="text" name="username">
+                    <input type="text" name="userName">
                 </p>
                 <p>密码
                     <input type="password" name="password">
