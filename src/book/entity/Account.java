@@ -2,10 +2,31 @@ package book.entity;
 
 import java.util.Objects;
 
-public class user
+public class Account
 {
     private String userName;
     private String password;
+    private int id;
+
+    public int getId()
+    {
+        return id;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "userBean{" +
+                "userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", id=" + id +
+                '}';
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
     public String getUserName()
     {
@@ -22,8 +43,8 @@ public class user
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        user user = (user) o;
-        return Objects.equals(userName, user.userName) && Objects.equals(password, user.password);
+        Account Account = (Account) o;
+        return Objects.equals(userName, Account.userName) && Objects.equals(password, Account.password);
     }
 
     @Override

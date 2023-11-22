@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.UseDao">
+    <select id="selectAccount" parameterType="book.entity.Account" resultType="book.entity.Account">
+        select * from account where userName=#{userName} and password=#{password}
+    </select>
+    <select id="selectUserId" parameterType="book.entity.Account" resultType="Integer">
+        select id from account where userName=#{userName} and password=#{password}
+    </select>
+    <select id="selectAccountByName" parameterType="String" resultType="book.entity.Account">
+        select * from account where userName=#{userName}
+    </select>
+    <select id="selectRoleByName" parameterType="String" resultType="book.entity.Role">
+        select roleName
+        from role
+                 join userrolemapping on userrolemapping.id = (select id from account where userName = #{userName})
+        where userrolemapping.roleId = role.roleId
+    </select>
+    <select id="selectRolesByName" parameterType="String" resultType="book.entity.Role">
+        select roleName
+        from role
+                 join userrolemapping on userrolemapping.id = (select id from account where userName = #{userName})
+        where userrolemapping.roleId = role.roleId
+    </select>
+    <select id="selectAllRole" resultType="book.entity.Role">
+        select * from role
+    </select>
+    <select id="selectAllUser" resultType="book.entity.UserInfo">
+        select * from userinfo
+    </select>
+    <select id="selectUserInfoById" parameterType="Integer" resultType="book.entity.UserInfo">
+        select * from userinfo where id=#{id}
+    </select>
+    <select id="selectWorkUnitByUnitName" parameterType="String" resultType="book.entity.WorkUnit">
+        select * from workunit where unitName=#{unitName}
+    </select>
+    <select id="selectAllWorkUnit" resultType="book.entity.WorkUnit">
+        select * from workunit
+    </select>
+    <select id="selectBookInfoByName" parameterType="String" resultType="book.entity.BookInfo">
+        select * from bookinfo where bookName=#{bookName}
+    </select>
+    <select id="selectBookInfoById" parameterType="int" resultType="book.entity.BookInfo">
+        select * from bookinfo where id=#{id}
+    </select>
+    <select id="selectBookThroughFilter" parameterType="String" resultType="book.entity.BookInfo">
+        select * from bookinfo where bookName like '%#{filterTxt}%' or id like '%#{filterTxt}%'
+                                  or author like '%#{filterTxt}%'  or publish like '%#{filterTxt}%'
+    </select>
+    <select id="selectAllBookInfo" resultType="book.entity.BookInfo">
+        select * from bookinfo
+    </select>
+    <select id="selectUnitById" parameterType="int" resultType="book.entity.WorkUnit">
+        select * from workunit where id=#{id}
+    </select>
+</mapper>

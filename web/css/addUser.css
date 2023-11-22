@@ -1,0 +1,108 @@
+html, body {
+    margin: 0;
+    padding: 0
+}
+
+.center {
+    padding: 15px 15px 15px 85px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.center ul {
+    list-style-type: none; /* 去掉原点 */
+    margin: 0; /* 去掉外边距 */
+    padding: 0px; /* 去掉内边距 */
+}
+
+
+.center li {
+    margin-top: 8px;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-align: justify;
+}
+
+.center li p {
+    margin-top: 10px;
+    width: 80px;
+    text-align: center;
+    font-size: 15px;
+    height: 60%;
+    line-height: 30px;
+    display: inline-block;
+}
+
+input[type=text] {
+    height: 60%;
+    width: 600px;
+    margin-left: 60px;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+}
+
+input[type=password] {
+    height: 60%;
+    width: 600px;
+    margin-left: 60px;
+    border: 2px solid #cecece;
+    border-radius: 5px;
+}
+
+input[type=submit] {
+    margin-top: 10px;
+    background-color: #2489DB;
+    color: white;
+    height: 80%;
+    width: 120px;
+    margin-left: 260px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+input[type=reset] {
+    margin-top: 10px;
+    color: #2489DB;
+    background-color: white;
+    height: 80%;
+    width: 120px;
+    margin-left: 100px;
+    border: 1px solid #2489DB;
+    border-radius: 5px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+    line-height: 26px;
+}
+
+input[type="radio"] + span {
+
+    width: 40px;
+    height: 40px;
+}
+
+select {
+    border: 2px solid #cecece;
+    height: 60%;
+    width: 180px;
+    border-radius: 4px;
+    margin-left: 60px;
+}
+
+input[type=radio] {
+    height: 80%;
+    margin-left: 80px;
+}
+
+input:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: none;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.UseDao">
+    <update id="updateBookInfoById" parameterType="book.entity.BookInfo" >
+        update bookinfo
+        set bookName= #{bookName}
+          , createTime=#{createTime}
+          , author=#{author}
+          , publish=#{publish}
+          , kind=#{kind}
+          , pageNum=#{pageNum}
+          , price=#{price}
+          , path=#{path}
+        where id = #{id}
+    </update>
+    <update id="updateUserInfoById" parameterType="book.entity.UserInfo">
+        update userInfo
+        set userName=#{userName},
+            realName=#{realName},
+            iphone=#{iphone},
+            email=#{email},
+            place=#{place},
+            sex=#{sex},
+            image=#{image}
+        where id=#{id}
+    </update>
+</mapper>

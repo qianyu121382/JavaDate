@@ -16,6 +16,7 @@
                 <div class="card fat">
                     <div class="card-body">
                         <h4 class="card-title">Login</h4>
+                        <h3 class="card-title" style="color: red">${requestScope.error}</h3>
                         <form action="login.do?method=login1" method="POST">
                             <div class="form-group">
                                 <label for="userName">用户名</label>
@@ -54,8 +55,8 @@
     </div>
 </section>
 
-<script src="js/my_login/jquery.min.js"></script>
-<script src="js/my_login/bootstrap.min.js"></script>
-<script src="js/my_login/my-login.js"></script>
+<script src="../../js/my_login/jquery.min.js"></script>
+<script src="../../js/my_login/bootstrap.min.js"></script>
+<script src="../../js/my_login/my-login.js"></script>
 </body>
 </html>

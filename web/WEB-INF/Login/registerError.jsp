@@ -1,7 +1,14 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: HH
+  Date: 2023-11-19
+  Time: 17:39
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户登录</title>
+    <title>Title</title>
     <link rel="stylesheet" type="text/css" href="css/my_login/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/my-login.css"/>
 </head>
@@ -15,33 +22,38 @@
                 </div>
                 <div class="card fat">
                     <div class="card-body">
-                        <h4 class="card-title">Login</h4>
-                        <form action="login.do?method=login1" method="POST">
+                        <h4 class="card-title">Register</h4>
+                        <h3 class="card-title" style="color: red">${requestScope.error}</h3>
+                        <form action="register.do?method=register1" method="POST">
                             <div class="form-group">
-                                <label for="userName">用户名</label>
-                                <input id="userName" type="text" class="form-control" name="userName" value="" required autofocus>
+                                <label for="name">用户名</label>
+                                <input id="name" type="text" class="form-control" name="userName" required autofocus>
                             </div>
+
                             <div class="form-group">
-                                <label for="password">密码
-                                    <a href="forgot.html" class="float-right">
-                                        忘记密码?
-                                    </a>
-                                </label>
-                                <input id="password" type="password" class="form-control" name="password" required data-eye>
+                                <label for="email">邮箱地址</label>
+                                <input id="email" type="email" class="form-control" name="email" required>
                             </div>
+
                             <div class="form-group">
+                                <label for="password">密码</label>
+                                <input id="password" type="password" class="form-control" name="password" required
+                                       data-eye>
+                            </div>
+
+                            <div class="form-grouxp">
                                 <label>
-                                    <input type="checkbox" name="remember"> 记住密码
+                                    <input type="checkbox" name="aggree" value="1"> I agree to the Terms and Conditions
                                 </label>
                             </div>
 
                             <div class="form-group no-margin">
                                 <button type="submit" class="btn btn-primary btn-block">
-                                    登录
+                                    注册
                                 </button>
                             </div>
                             <div class="margin-top20 text-center">
-                                还未拥有用户? <a href="${pageContext.request.contextPath}/register.jsp">注册</a>
+                                已经拥有用户? <a href="index.jsp">登录</a>
                             </div>
                         </form>
                     </div>
@@ -54,8 +66,8 @@
     </div>
 </section>
 
-<script src="js/my_login/jquery.min.js"></script>
-<script src="js/my_login/bootstrap.min.js"></script>
-<script src="js/my_login/my-login.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/my-login.js"></script>
 </body>
 </html>

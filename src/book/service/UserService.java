@@ -1,26 +1,30 @@
 package book.service;
 
-import book.dao.UseDao;
-import book.entity.user;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import book.entity.*;
+import book.util.Result;
 
-@Service
-public class UserService
+import java.util.ArrayList;
+
+
+public interface UserService
 {
-    @Autowired()
-    private UseDao useDao;
+    public Result<Role> login(Account account);
+    public Result<Boolean> register(Account account, String email);
+    public UserInfo getUserInfo(Account account);
+    public Result<Boolean> registerStaff(UserInfo UserInfo, Account account, String role, String jobId);
+    public Result<ArrayList<Role>> getAllRoles();
+    public Result<ArrayList<WorkUnit>> getAllWorkUnit();
 
-    /**
-     * 登录界面
-     * @param user 用户登录的参数
-     * @return 查询结果
-     */
-    public boolean login(user user)
-    {
-        user userSelect = useDao.selectUserByName(user.getUserName());
-        return userSelect.equals(user);
-    }
-
-
+    Result<ArrayList<UserInfo>> getAllUserInfo();
+    public Result<ArrayList<UserInfoAndRole>> getAllUserAndRoles();
+    public Result<Boolean> addWorkUnit(WorkUnit workUnit);
+    public Result<ArrayList<BookInfo>>selectAllBooks();
+    public Result<Boolean>addBookInfo(BookInfo bookInfo);
+    public Result<BookInfo>selectBookByName(String bookName);
+    public Result<ArrayList<BookInfo>>selectBookFilter(String filterTxt);
+    public Result<BookInfo>updateBookInfoById(BookInfo bookInfo);
+    public Result<BookInfo>selectBookById(int id);
+    public Result<UserInfo>updateUserInfoById(UserInfo userInfo);
+    public Result<UserInfo>selectUserInfo(int id);
+    public Result<Integer>getUserId(Account account);
 }
