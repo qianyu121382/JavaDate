@@ -2,7 +2,7 @@ package book.entity.Mapping;
 
 import java.util.Date;
 
-public class circulate
+public class Circulate
 {
     private int id;
     private int bookId;

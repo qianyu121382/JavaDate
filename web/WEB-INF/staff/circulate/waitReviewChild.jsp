@@ -10,9 +10,9 @@
 <html>
 <head>
     <%
-        BookInfo data = (BookInfo) request.getAttribute("data");
+        ArrayList<BookInfo> data = (ArrayList<BookInfo>) request.getAttribute("data");
     %>
-    <title>Title</title>0
+    <title>Title</title>
     <style>
         table {
             width: 80%;
@@ -68,91 +68,48 @@
 </head>
 <body>
 <div class="center">
+    <div>
+        <h2 style="margin-left: 380px;margin-top: 40px;font-size: 34px">所有待审核图书信息</h2>
+    </div>
+    <div style="background-color: white;margin-top:30px;margin-left: 50px;margin-bottom: 30px;">
+        <form action="Book.do?" method="post">
+            <input type="text" name="filterTxt">
+            <input type="submit" value="搜索"></form>
+    </div>
     <table>
-        <caption>图书信息</caption>
+
         <thead>
         <tr>
+            <th>ID</th>
+            <th>图书名称</th>
+            <th>作者</th>
             <th>类型</th>
-            <th>值</th>
+            <th>价格</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
+        <% for (BookInfo bookInfo : data)
+        {%>
         <tr>
-            <td>ID
+            <td><%= bookInfo.getId() %>
             </td>
-            <td><%= data.getId()%>
+            <td><%= bookInfo.getBookName() %>
             </td>
+            <td><%= bookInfo.getAuthor() %>
+            </td>
+            <td><%= bookInfo.getKind() %>
+            </td>
+            <td><%= bookInfo.getPrice() %>
+            </td>
+            <td><a href=skip.do?bookName=<%= bookInfo.getBookName() %>>详情</a> | <a
+                    href=deleteRole.jsp?roleId=<%= bookInfo.getPrice() %>>删除</a></td>
         </tr>
-        <tr>
-            <td>图书名称
-            </td>
-            <td>
-                <%= data.getBookName() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                作者
-            </td>
-            <td><%= data.getAuthor() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                类型
-            </td>
-            <td><%= data.getKind() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                价格
-            </td>
-            <td><%= data.getPrice() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                页数
-            </td>
-            <td><%= data.getPageNum() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                出版社
-            </td>
-            <td><%= data.getPublish() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                图片
-            </td>
-            <td><%= data.getPath() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                入库时间
-            </td>
-            <td><%= data.getCreateTime() %>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                所属单位ID
-            </td>
-            <td><%= data.getUnitId() %>
-            </td>
-        </tr>
+        <% } %>
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="6">
-                <a href=skip.do?method=circulate&id=<%=data.getId()%>>申请流通</a>
-                <a href=skip.do?id=<%=data.getId()%>>修改</a>
-                <a href="skip.do?method=showBook">返回</a></td>
+            <td colspan="6"></td>
         </tr>
         </tfoot>
     </table>

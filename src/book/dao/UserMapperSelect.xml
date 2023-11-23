@@ -46,8 +46,8 @@
         select * from bookinfo where id=#{id}
     </select>
     <select id="selectBookThroughFilter" parameterType="String" resultType="book.entity.BookInfo">
-        select * from bookinfo where bookName like '%#{filterTxt}%' or id like '%#{filterTxt}%'
-                                  or author like '%#{filterTxt}%'  or publish like '%#{filterTxt}%'
+        select * from bookinfo where bookName like '%${filterTxt}%' or id like '%${filterTxt}%'
+                                  or author like '%${filterTxt}%'  or publish like '%${filterTxt}%'
     </select>
     <select id="selectAllBookInfo" resultType="book.entity.BookInfo">
         select * from bookinfo

@@ -31,8 +31,8 @@
                     <div>
                         <a onclick="toggleDropdown()">图书流通</a>
                         <div class="dropdown-content">
-                            <a class="xiala" href="#">待审核</a>
-                            <a class="xiala" href="#">正在流通</a>
+                            <a class="xiala" href="skip.do?method=addUser">待审核</a>
+                            <a class="xiala" href="skip.do?method=showUser">正在流通</a>
                             <a class="xiala" href="#">已结束</a>
                             <a class="xiala" href="#">申请</a>
                         </div>
@@ -41,12 +41,13 @@
             </ul>
         </div>
         <div id="clanci">
-            <jsp:include page="AddBookChild.jsp"/>
+            <jsp:include page="circulateIndexChild.jsp"/>
         </div>
     </div>
 </div>
 <script>
     function toggleDropdown() {
+        console.log(111)
         // 获取下拉框的元素
         var dropdown = document.querySelector(".dropdown-content");
         // 判断下拉框的状态，如果是隐藏的，就显示，如果是显示的，就隐藏

@@ -21,6 +21,7 @@ public class BookController
     @RequestMapping(params = "filterTxt")
     public String showBookSelect(String filterTxt, Model model)
     {
+        System.out.println(11);
         Result<ArrayList<BookInfo>> result=userService.selectBookFilter(filterTxt);
         model.addAttribute("data",result.getData());
         return "staff/Book/showBook";

@@ -34,4 +34,8 @@
         values (#{bookName}, #{createTime}, #{author}, #{publish}, #{kind}, #{pageNum}, #{price}, #{path}, #{unitId},
                 #{borrowState}, #{circulateState})
     </insert>
+    <insert id="insertCirculate" parameterType="book.entity.Mapping.Circulate" keyProperty="id" useGeneratedKeys="true">
+        insert into circulate (bookId, unitId, userId, circulateTime, circulateReason, other, state)
+        values (#{bookId}, #{unitId}, #{userId}, #{circulateTime}, #{circulateReason}, #{other}, #{state})
+    </insert>
 </mapper>

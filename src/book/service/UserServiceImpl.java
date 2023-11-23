@@ -230,6 +230,9 @@ public class UserServiceImpl implements UserService
     @Override
     public Result<UserInfo>updateUserInfoById(UserInfo userInfo)
     {
-        return new Result(true,"",useDao.updateUserInfoById(userInfo));
+        useDao.updateUserInfoById(userInfo);
+        return new Result<>(true, "", userInfo);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package book.dao;
 
 import book.entity.*;
+import book.entity.Mapping.Circulate;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -45,5 +46,6 @@ public interface UseDao
     int updateUserInfoById(UserInfo userInfo);
     UserInfo selectUserInfoById(int id);
     int selectUserId(Account account);
+    int insertCirculate(Circulate circulate);
 
 }
