@@ -55,4 +55,59 @@
     <select id="selectUnitById" parameterType="int" resultType="book.entity.WorkUnit">
         select * from workunit where id=#{id}
     </select>
+    <select id="selectUnitByUserId" parameterType="int" resultType="Integer">
+        select unitId from staff
+            join userrolemapping on userrolemapping.id=#{id}
+                where userrolemapping.roleId=staff.roleId
+    </select>
+    <select id="selectAllBookInfoByStateAndUnitId" parameterType="book.entity.Turple.UnitIdAndCirculateState" resultType="book.entity.BookInfo">
+        select * from bookinfo where circulateState=#{state} and unitId=#{unitId}
+    </select>
+    <select id="selectUnitIdByUserId" parameterType="Integer" resultType="Integer">
+        select unitId from staff
+            join userrolemapping on userrolemapping.id=#{id}
+            where  userrolemapping.roleId=staff.roleId
+    </select>
+    <select id="selectUserInfoByUnitId" parameterType="Integer" resultType="book.entity.UserInfo">
+        select * from userinfo where unitId=#{unitId}
+    </select>
+    <select id="selectCirculateByUnitIdState" parameterType="book.entity.Turple.UnitIdCirState" resultType="book.entity.Mapping.Circulate">
+        select * from circulate
+                where state=#{state} and unitId =#{unitId}
+    </select>
+    <select id="selectCirculateById" parameterType="Integer" resultType="book.entity.Mapping.Circulate">
+        select * from circulate where id=#{id}
+    </select>
+    <select id="selectBookByCirId" parameterType="Integer" resultType="book.entity.BookInfo">
+        select *
+        from bookinfo
+                 join circulate on circulate.id = #{id}
+        where circulate.bookId = bookinfo.id
+    </select>
+    <select id="selectBookFromCirByUnitIdState" parameterType="book.entity.Turple.UnitIdCirState" resultType="book.entity.Mapping.Circulate">
+        select * from circulate
+            join bookinfo on bookinfo.unitId=#{unitId}
+                where state=#{state} and bookinfo.id=circulate.bookId
+    </select>
+    <select id="selectBorrowStateById" parameterType="Integer" resultType="book.entity.Mapping.Borrow">
+            select * from borrow where id=#{id}
+    </select>
+    <select id="selectBorrowBookByUserId" parameterType="Integer" resultType="book.entity.Mapping.Borrow">
+        select * from borrow where userId=#{userId}
+    </select>
+    <select id="selectBorrowByBookId" parameterType="Integer" resultType="book.entity.Mapping.Borrow">
+        select * from borrow where bookId=#{bookId}
+    </select>
+    <select id="selectNumBookByUnitId" parameterType="Integer" resultType="Integer">
+        select count(*) from bookinfo where unitId=#{unitId}
+    </select>
+    <select id="selectNumCirByUnitId" parameterType="Integer" resultType="Integer">
+        select count(*) from circulate where unitId=#{unitId}
+    </select>
+    <select id="selectNumBorByUnitId" parameterType="Integer" resultType="Integer">
+        select count(*) from borrow where unitId=#{unitId}
+    </select>
+    <select id="selectNumRoleByUnitId" parameterType="Integer" resultType="Integer">
+        select count(*) from staff where unitId=#{unitId}
+    </select>
 </mapper>

@@ -12,7 +12,7 @@
     <%
         BookInfo data = (BookInfo) request.getAttribute("data");
     %>
-    <title>Title</title>0
+    <title>Title</title>
     <style>
         table {
             width: 80%;
@@ -78,6 +78,15 @@
         </thead>
         <tbody>
         <tr>
+            <td>
+                图片
+            </td>
+            <td>
+                <% %>
+                <img src="${pageContext.request.contextPath}/WEB-INF/images/img.png" alt="无法加载">
+            </td>
+        </tr>
+        <tr>
             <td>ID
             </td>
             <td><%= data.getId()%>
@@ -127,16 +136,16 @@
         </tr>
         <tr>
             <td>
-                图片
+                入库时间
             </td>
-            <td><%= data.getPath() %>
+            <td><%= data.getCreateTime() %>
             </td>
         </tr>
         <tr>
             <td>
-                入库时间
+                流通状态
             </td>
-            <td><%= data.getCreateTime() %>
+            <td><%= data.getCirculateState() %>
             </td>
         </tr>
         <tr>
@@ -150,7 +159,7 @@
         <tfoot>
         <tr>
             <td colspan="6">
-                <a href=skip.do?method=circulate&id=<%=data.getId()%>>申请流通</a>
+                <a href=skip.do?circulateId=<%=data.getId()%>>申请流通</a>
                 <a href=skip.do?id=<%=data.getId()%>>修改</a>
                 <a href="skip.do?method=showBook">返回</a></td>
         </tr>

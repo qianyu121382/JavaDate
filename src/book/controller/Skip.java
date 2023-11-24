@@ -1,6 +1,7 @@
 package book.controller;
 
 import book.entity.BookInfo;
+import book.entity.Mapping.Circulate;
 import book.entity.UserInfo;
 import book.entity.UserInfoAndRole;
 import book.entity.WorkUnit;
@@ -59,6 +60,12 @@ public class Skip
         model.addAttribute("data",userService.selectAllBooks().getData());
         return "staff/Book/showBook";
     }
+    @RequestMapping(params = "method=index")
+    public String skipIndex(Model model)
+    {
+        model.addAttribute("data",userService.selectAllBooks().getData());
+        return "Admin/Book/showIndex";
+    }
     @RequestMapping(params = "bookName")
     public String skipShowBookDetail(String bookName,Model model)
     {
@@ -72,6 +79,28 @@ public class Skip
         Result<BookInfo>bookInfoResult=userService.selectBookByName(bookName);
         model.addAttribute("data",bookInfoResult.getData());
         return "staff/Book/BookDetailAlter";
+    }
+    @RequestMapping(params = "method=waitReview")
+    public String skipWaitReview(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        Result<ArrayList<BookInfo>> result=userService.selectBookWait(userInfo.getId());
+        model.addAttribute("data",result.getData());
+        return "staff/circulate/waitReview";
+    }
+    @RequestMapping(params = "circulateId")
+    public String skipCirculate(int circulateId,Model model)
+    {
+        model.addAttribute("data",userService.selectBookById(circulateId).getData());
+        return "staff/circulate/circulateFather";
+    }
+    @RequestMapping(params = "method=static")
+    public String skipSta(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        int unitId= userService.returnUnitId(userInfo.getId()).getData();
+        model.addAttribute("data",userService.resultNums(unitId).getData());
+        return "staff/statistics/index";
     }
     @RequestMapping(params = "id")
     public String skipBookAlter(int id,Model model)
@@ -87,4 +116,52 @@ public class Skip
         request.getSession().setAttribute("user",userService.selectUserInfo(userInfo.getId()).getData());
         return "All/PersonalCenter";
     }
+    @RequestMapping(params = "method=app")
+    public String skipApp(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        ArrayList<Circulate> arrayList=new ArrayList<>();
+        arrayList.addAll(userService.selectBookByState(userInfo.getId(),"待审核").getData());
+        arrayList.addAll(userService.selectBookByState(userInfo.getId(),"待审核归还").getData());
+        model.addAttribute("data",arrayList);
+        return "staff/circulate/circulateApp";
+    }
+    @RequestMapping(params = "method=circulating")
+    public String skipCir(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        model.addAttribute("data",userService.selectBookByState(userInfo.getId(),"正在流通中").getData());
+        return "staff/circulate/circulating/index";
+    }
+    @RequestMapping(params = "method=into")
+    public String skipInto(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        model.addAttribute("data",userService.selectBookCirInto(userInfo.getId()).getData());
+        return "staff/circulate/circulateInto/index";
+    }
+    @RequestMapping(params = "method=endCir")
+    public String skipEndCir(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        model.addAttribute("data",userService.selectBookByState(userInfo.getId(), "已结束").getData());
+        return "staff/circulate/end/index";
+    }
+
+    @RequestMapping(params = "method=readerShow")
+    public String skipBookShowReader(Model model)
+    {
+        model.addAttribute("data",userService.selectAllBooks().getData());
+        return "reader/index";
+    }
+
+    @RequestMapping(params = "method=returnBorrow")
+    public String skipReturnBorrow(Model model,HttpServletRequest request)
+    {
+        UserInfo userInfo= (UserInfo) request.getSession().getAttribute("user");
+        model.addAttribute("data",userService.selectBorrowToReturn(userInfo.getId()).getData());
+        return "reader/returnIndex";
+    }
+
+
 }

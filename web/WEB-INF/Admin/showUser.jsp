@@ -23,8 +23,8 @@
         </div>
         <div id="navigacija">
             <ul>
-                <li><a href="#">首页</a></li>
-                <li><a href="#">个人中心</a></li>
+                <li><a href="skip.do?method=index">首页</a></li>
+                <li><a href="skip.do?method=alterUser">个人中心</a></li>
                 <li><a href="#">图书管理</a></li>
                 <li>
                     <div>

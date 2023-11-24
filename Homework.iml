@@ -29,5 +29,6 @@
     <orderEntry type="library" name="JDBC" level="application" />
     <orderEntry type="library" name="com" level="application" />
     <orderEntry type="library" name="JavaEE" level="application" />
+    <orderEntry type="library" name="File" level="project" />
   </component>
 </module>

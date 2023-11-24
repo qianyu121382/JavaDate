@@ -22,7 +22,8 @@
         values (#{id}, #{roleId})
     </insert>
     <insert id="insertStaff" parameterType="book.entity.Staff">
-        insert into staff (roleId, jobId) values (#{roleId}, #{jobId})
+        insert into staff (roleId, jobId)
+        values (#{roleId}, #{jobId})
     </insert>
     <insert id="insertWork" parameterType="book.entity.WorkUnit" keyProperty="id" useGeneratedKeys="true">
         insert into workunit (unitName, person, telephone, email, address, state)
@@ -37,5 +38,9 @@
     <insert id="insertCirculate" parameterType="book.entity.Mapping.Circulate" keyProperty="id" useGeneratedKeys="true">
         insert into circulate (bookId, unitId, userId, circulateTime, circulateReason, other, state)
         values (#{bookId}, #{unitId}, #{userId}, #{circulateTime}, #{circulateReason}, #{other}, #{state})
+    </insert>
+    <insert id="insertBorrow" parameterType="book.entity.Mapping.Borrow" keyProperty="id" useGeneratedKeys="true">
+        insert into borrow (bookId, userId, unitId, borrowTime, returnTime, state, other)
+        values (#{bookId}, #{userId}, #{unitId}, #{borrowTime}, #{returnTime}, #{state}, #{other})
     </insert>
 </mapper>

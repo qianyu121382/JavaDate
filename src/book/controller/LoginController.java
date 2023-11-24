@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 @Controller
@@ -23,8 +24,9 @@ public class LoginController
     private UserService userService;
 
     @RequestMapping(params = "method=login1")
-    public String login(Account account, Model model)
+    public String login(Account account, Model model) throws IOException
     {
+
         int id=userService.getUserId(account).getData();
         account.setId(id);
         Result<Role> result = userService.login(account);
@@ -48,6 +50,9 @@ public class LoginController
             System.out.println("You will login staff/index");
             return "staff/Book/AddBook";
         }
+        model.addAttribute("role", result.getData());
+        model.addAttribute("user", userInfo);
+        model.addAttribute("data",userService.selectAllBooks().getData());
         System.out.println("You will login reader/index");
         return "reader/index";
     }

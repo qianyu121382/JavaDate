@@ -23,7 +23,7 @@
         </div>
         <div id="navigacija">
             <ul>
-                <li><a href="#">首页</a></li>
+                <li><a href="skip.do?method=index">首页</a></li>
                 <li><a href="skip.do?method=alterUser">个人中心</a></li>
                 <li><a href="#">图书管理</a></li>
                 <li>
@@ -36,6 +36,7 @@
                     </div>
                 </li>
                 <li><a href="skip.do?method=showWork">单位管理</a></li>
+                <li><a href="Admin.do?method=batch">批量上传</a></li>
                 <li><a href="#">公告管理</a></li>
             </ul>
         </div>

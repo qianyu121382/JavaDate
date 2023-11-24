@@ -31,17 +31,19 @@
           <div>
             <a onclick="toggleDropdown()">图书流通</a>
             <div class="dropdown-content">
-              <a class="xiala" href="skip.do?method=addUser">待审核</a>
-              <a class="xiala" href="skip.do?method=showUser">正在流通</a>
-              <a class="xiala" href="#">已结束</a>
-              <a class="xiala" href="#">申请</a>
+              <a class="xiala" href="skip.do?method=waitReview">待审核</a>
+              <a class="xiala" href="skip.do?method=circulating">正在流通</a>
+              <a class="xiala" href="skip.do?method=into">已流入</a>
+              <a class="xiala" href="skip.do?method=endCir">已结束</a>
+              <a class="xiala" href="skip.do?method=app">申请</a>
             </div>
           </div>
         </li>
+        <li><a href="skip.do?method=static">图书统计</a></li>
       </ul>
     </div>
     <div id="clanci">
-      <jsp:include page="circulateIndexChild.jsp"/>
+      <jsp:include page="waitReviewChild.jsp"/>
     </div>
   </div>
 </div>

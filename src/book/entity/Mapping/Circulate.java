@@ -10,9 +10,9 @@ public class Circulate
     private int userId;
     private Date circulateTime;
     private Date returnTime;
-    private String circulateReason;
-    private String state;
-    private String other;
+    private String circulateReason="";
+    private String state="待审核";
+    private String other="";
 
     public int getId()
     {
@@ -102,5 +102,21 @@ public class Circulate
     public void setOther(String other)
     {
         this.other = other;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Circulate{" +
+                "id=" + id +
+                ", bookId=" + bookId +
+                ", unitId=" + unitId +
+                ", userId=" + userId +
+                ", circulateTime=" + circulateTime +
+                ", returnTime=" + returnTime +
+                ", circulateReason='" + circulateReason + '\'' +
+                ", state='" + state + '\'' +
+                ", other='" + other + '\'' +
+                '}';
     }
 }

@@ -1,7 +1,13 @@
 package book.dao;
 
 import book.entity.*;
+import book.entity.Mapping.Borrow;
 import book.entity.Mapping.Circulate;
+import book.entity.Turple.IdCirState;
+import book.entity.Turple.IdDate;
+import book.entity.Turple.UnitIdAndCirculateState;
+import book.entity.Turple.UnitIdCirState;
+import book.util.Result;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -47,5 +53,30 @@ public interface UseDao
     UserInfo selectUserInfoById(int id);
     int selectUserId(Account account);
     int insertCirculate(Circulate circulate);
+    int updateBookCirculateStateById(IdCirState idCirState);
+    ArrayList<BookInfo> selectAllBookInfoByStateAndUnitId(UnitIdAndCirculateState unitIdAndCirculateState);
+    int selectUnitIdByUserId(int id);
+    ArrayList<BookInfo> selectAppBookByUnitId(int unitId);
+    int selectAppUnitIdByUnitId(int unitId);
+    ArrayList<UserInfo> selectUserInfoByUnitId(int unitId);
+    ArrayList<Circulate> selectCirculateByUnitIdState(UnitIdCirState unitIdCirState);
 
+    int updateCirculateAppAgreeById(int id);
+    BookInfo selectBookByCirId(int id);
+    Circulate selectCirculateById(int id);
+    ArrayList<Circulate> selectBookFromCirByUnitIdState(UnitIdCirState unitIdCirState);
+    int updateCirStateById(IdCirState idCirState);
+    int insertBorrow(Borrow borrow);
+    int updateBorrowStateById(IdCirState idCirState);
+    int updateBookBStateById(IdCirState idCirState);
+    ArrayList<Borrow> selectBorrowBookByUserId(int userId);
+    Borrow selectBorrowByBookId(int bookId);
+    Borrow selectBorrowStateById(int id);
+    int updateBorrowTimeById(IdDate idDate);
+    int updateCirTimeById(IdDate idDate);
+    int selectNumBookByUnitId(int unitId);
+    int selectUnitByUserId(int userId);
+    int selectNumRoleByUnitId(int unitId);
+    int selectNumBorByUnitId(int unitId);
+    int selectNumCirByUnitId(int unitId);
 }

@@ -26,4 +26,26 @@
             image=#{image}
         where id=#{id}
     </update>
+    <update id="updateBookCirculateStateById" parameterType="book.entity.Turple.IdCirState">
+        update bookinfo set circulateState =#{state} where id=#{id}
+    </update>
+    <update id="updateCirculateAppAgreeById" parameterType="Integer">
+        update circulate set state='正在流通中' where id=#{id}
+    </update>
+    <update id="updateCirStateById" parameterType="book.entity.Turple.IdCirState">
+        update circulate set state=#{state} where id=#{id}
+    </update>
+    <update id="updateBorrowStateById" parameterType="book.entity.Turple.IdCirState">
+        update borrow set state=#{state} where id=#{id}
+    </update>
+    <update id="updateBookBStateById" parameterType="book.entity.Turple.IdCirState">
+        update bookinfo set borrowState=#{state} where id=#{id}
+    </update>
+    <update id="updateBorrowTimeById" parameterType="book.entity.Turple.IdDate">
+        update borrow set returnTime=#{date} where id=#{id}
+    </update>
+    <update id="updateCirTimeById" parameterType="book.entity.Turple.IdDate">
+        update circulate set returnTime=#{date} where id=#{id}
+    </update>
+
 </mapper>

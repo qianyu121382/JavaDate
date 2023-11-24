@@ -1,6 +1,7 @@
 package book.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class BookInfo
     private String borrowState="未借出";
     private String circulateState="未流通";
     private String permission="允许";
+
     public int getId()
     {
         return id;

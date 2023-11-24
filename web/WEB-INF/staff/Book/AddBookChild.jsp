@@ -10,7 +10,7 @@
 <link href="css/addUser.css" type="text/css" rel="stylesheet">
 <body>
 <div class="center">
-    <form action="${pageContext.request.contextPath}/staff.do?method=book1" method="post">
+    <form action="${pageContext.request.contextPath}/staff.do?method=book1" method="post" enctype="multipart/form-data">
         <h2 class="">添加书籍</h2>
         <div>
             <ul>
@@ -41,6 +41,10 @@
                 <li>
                     <p>单位ID</p>
                     <input type="text" name="unitId">
+                </li>
+                <li>
+                    <p>图片</p>
+                    <input type="file" name="file">
                 </li>
                 <div style="height: 50px">
                     <input type="submit" value="添加">

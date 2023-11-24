@@ -68,16 +68,8 @@
 </head>
 <body>
 <div class="center">
-    <div>
-        <h2 style="margin-left: 380px;margin-top: 40px;font-size: 34px">所有待审核图书信息</h2>
-    </div>
-    <div style="background-color: white;margin-top:30px;margin-left: 50px;margin-bottom: 30px;">
-        <form action="Book.do?" method="post">
-            <input type="text" name="filterTxt">
-            <input type="submit" value="搜索"></form>
-    </div>
     <table>
-
+        <caption>所有待审核图书信息</caption>
         <thead>
         <tr>
             <th>ID</th>
@@ -85,7 +77,7 @@
             <th>作者</th>
             <th>类型</th>
             <th>价格</th>
-            <th>操作</th>
+            <th>状态</th>
         </tr>
         </thead>
         <tbody>
@@ -102,8 +94,9 @@
             </td>
             <td><%= bookInfo.getPrice() %>
             </td>
-            <td><a href=skip.do?bookName=<%= bookInfo.getBookName() %>>详情</a> | <a
-                    href=deleteRole.jsp?roleId=<%= bookInfo.getPrice() %>>删除</a></td>
+            <td>
+                <%=bookInfo.getCirculateState()%>
+            </td>
         </tr>
         <% } %>
         </tbody>
