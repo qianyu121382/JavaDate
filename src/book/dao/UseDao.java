@@ -1,5 +1,5 @@
 package book.dao;
 
-public class UseDao
+public interface UseDao
 {
 }
