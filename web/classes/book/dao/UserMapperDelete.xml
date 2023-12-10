@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.UseDao">
+    <delete id="deleteUserinfoById" parameterType="Integer">
+        delete from userinfo where id=#{id}
+    </delete>
+    <delete id="deleteAccountById" parameterType="Integer">
+        delete from account where id=#{id}
+    </delete>
+    <delete id="deleteRoleByRoleId" parameterType="Integer">
+        delete from role where roleId=#{roleId}
+    </delete>
+    <delete id="deleteURMapping" parameterType="Integer">
+        delete from userrolemapping where id=#{id}
+    </delete>
+    <delete id="deleteStaffByRoleId" parameterType="Integer">
+        delete from staff where roleId=#{roleId}
+    </delete>
+    <delete id="deleteBookById" parameterType="Integer">
+        delete from bookinfo where id=#{id}
+    </delete>
+</mapper>

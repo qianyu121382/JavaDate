@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book.dao.UseDao">
+    <insert id="insertAccount" parameterType="book.entity.Account" keyProperty="id" useGeneratedKeys="true">
+        insert into account (userName, password,question,answer)
+        values (#{userName}, #{password},#{question},#{answer})
+    </insert>
+    <insert id="insertRole" parameterType="book.entity.Role" keyProperty="roleId" useGeneratedKeys="true">
+        insert into role (roleName, createTime, state, other)
+        values (#{roleName}, #{createTime}, #{state}, #{other})
+    </insert>
+    <insert id="insertUserInfo" parameterType="book.entity.UserInfo">
+        insert into userInfo(id, userName, realName, iphone, email, place, isRegister, createTime, sex, image, state,
+                             lastTime)
+        values (#{id}, #{userName}, #{realName}, #{iphone}, #{email}, #{place}, #{isRegister}, #{createTime}, #{sex},
+                #{image}, #{state}, #{lastTime})
+    </insert>
+    <insert id="insertUserRoleMapping" parameterType="book.entity.UserRoleMapping">
+        insert into userrolemapping (id, roleId)
+        values (#{id}, #{roleId})
+    </insert>
+    <insert id="insertStaff" parameterType="book.entity.Staff">
+        insert into staff (roleId, jobId,unitId)
+        values (#{roleId}, #{jobId},#{unitId})
+    </insert>
+    <insert id="insertWork" parameterType="book.entity.WorkUnit" keyProperty="id" useGeneratedKeys="true">
+        insert into workunit (unitName, person, telephone, email, address, state)
+        values (#{unitName}, #{person}, #{telephone}, #{email}, #{address}, #{state})
+    </insert>
+    <insert id="insertBookInfo" parameterType="book.entity.BookInfo" keyProperty="id" useGeneratedKeys="true">
+        insert into bookinfo (bookName, createTime, author, publish, kind, pageNum, price, path, unitId, borrowState,
+                              circulateState)
+        values (#{bookName}, #{createTime}, #{author}, #{publish}, #{kind}, #{pageNum}, #{price}, #{path}, #{unitId},
+                #{borrowState}, #{circulateState})
+    </insert>
+    <insert id="insertCirculate" parameterType="book.entity.Mapping.Circulate" keyProperty="id" useGeneratedKeys="true">
+        insert into circulate (bookId, unitId, userId, circulateTime, circulateReason, other, state)
+        values (#{bookId}, #{unitId}, #{userId}, #{circulateTime}, #{circulateReason}, #{other}, #{state})
+    </insert>
+    <insert id="insertBorrow" parameterType="book.entity.Mapping.Borrow" keyProperty="id" useGeneratedKeys="true">
+        insert into borrow (bookId, userId, unitId, borrowTime, returnTime, state, other)
+        values (#{bookId}, #{userId}, #{unitId}, #{borrowTime}, #{returnTime}, #{state}, #{other})
+    </insert>
+</mapper>
