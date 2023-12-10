@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/Admin/index.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/Admin" />
         <entry key="file://$PROJECT_DIR$/web/WEB-INF/staff/circulate/circulateIndexChild.jsp" value="file://$PROJECT_DIR$/web/WEB-INF/staff/circulate" />
+        <entry key="file://$PROJECT_DIR$/web/index.jsp" value="file://$PROJECT_DIR$/web" />
       </map>
     </option>
   </component>
