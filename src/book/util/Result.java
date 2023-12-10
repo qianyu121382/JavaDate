@@ -3,8 +3,23 @@ package book.util;
 // 定义Result类，用来封装返回值
 public class Result<T> {
     private boolean success; // 表示是否成功
-    private String message; // 表示错误信息
+    private String message="操作成功!"; // 表示错误信息
     private T data; // 表示返回的数据
+
+    public Result()
+    {
+    }
+
+    public Result(boolean success)
+    {
+        this.success = success;
+    }
+
+    public Result(boolean success, T data)
+    {
+        this.success = success;
+        this.data = data;
+    }
 
     public boolean isSuccess()
     {

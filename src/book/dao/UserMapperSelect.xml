@@ -9,8 +9,14 @@
     <select id="selectUserId" parameterType="book.entity.Account" resultType="Integer">
         select id from account where userName=#{userName} and password=#{password}
     </select>
+    <select id="selectAccountWhenReset" parameterType="book.entity.Account" resultType="book.entity.Account">
+        select * from account where userName=#{userName} and question=#{question} and answer=#{answer}
+    </select>
     <select id="selectAccountByName" parameterType="String" resultType="book.entity.Account">
         select * from account where userName=#{userName}
+    </select>
+    <select id="selectRoleIdByUserId" parameterType="Integer" resultType="Integer">
+        select roleId from userrolemapping where id=#{id}
     </select>
     <select id="selectRoleByName" parameterType="String" resultType="book.entity.Role">
         select roleName
@@ -49,11 +55,18 @@
         select * from bookinfo where bookName like '%${filterTxt}%' or id like '%${filterTxt}%'
                                   or author like '%${filterTxt}%'  or publish like '%${filterTxt}%'
     </select>
+    <select id="selectUnitThroughFilter" parameterType="String" resultType="book.entity.WorkUnit">
+        select * from workunit where unitName like '%${filterTxt}%' or id like '%${filterTxt}%'
+                                or person like '%${filterTxt}%' or  address like '%${filterTxt}%'
+    </select>
     <select id="selectAllBookInfo" resultType="book.entity.BookInfo">
         select * from bookinfo
     </select>
     <select id="selectUnitById" parameterType="int" resultType="book.entity.WorkUnit">
         select * from workunit where id=#{id}
+    </select>
+    <select id="selectRoleIdByRoleId" parameterType="Integer" resultType="book.entity.Turple.StaffTurple">
+            select * from staff where roleId=#{roleId}
     </select>
     <select id="selectUnitByUserId" parameterType="int" resultType="Integer">
         select unitId from staff
